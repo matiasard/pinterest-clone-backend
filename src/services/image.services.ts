@@ -9,21 +9,6 @@ interface ImagesCtrl {
 
 export const imageCtrl: ImagesCtrl = {} as ImagesCtrl;
 
-// imageCtrl.getImages = async (_req: Request, res: Response) => {
-//   try {
-//     const imagesSaved = await prisma.image.findMany();
-//     res.json({ 
-//       ok: true, 
-//       msg: "get all saved images", 
-//       imagesSaved: imagesSaved 
-//     });
-//     // throw Error;
-//   } catch (err: any) {
-//     console.log(err.message)
-//     res.status(404).json({ ok: false, msg: "Error: image no encotrado", Error: err.message });
-//   }
-// };
-
 imageCtrl.getImages = async (req: Request, res: Response) => {
   try {
     const imagesSaved = await prisma.image.findMany({
@@ -60,13 +45,9 @@ imageCtrl.addFavoriteImage = async (req: Request, res: Response) => {
 
 imageCtrl.removeFavoriteImage = async (req: Request, res: Response) => {
   try {
-    let imageId = req.params.id.slice(1);
-    let userId = Number(req.params.id[0]);
-
     const imageFound = await prisma.image.delete({
       where: { 
-        id: imageId,
-        userId: userId, 
+        id: Number(req.params.id),
       }
     })
 

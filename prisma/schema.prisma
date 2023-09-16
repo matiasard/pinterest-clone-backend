@@ -19,8 +19,10 @@ model User {
 }
 
 // liked_by_user      Boolean
+// id                 String  @id 
 model Image {
-  id                 String  @id
+  id                 Int     @id @default(autoincrement())
+  idImage            String
   description        String?
   alt_description    String?
   download           String
