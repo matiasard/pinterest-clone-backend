@@ -1,4 +1,4 @@
-export interface PhotoSave {
+export interface ImageSave {
     id:                 string;
     liked_by_user:      boolean;
     description:        string;

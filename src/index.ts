@@ -1,12 +1,17 @@
 import 'dotenv/config';
 import express from "express";
-import { imagesRouter } from "./routes/images.routes";
-
-const app = express();
-app.use(express.json());
+import cors from "cors";
+import { imagesRouter, authRouter, userRouter } from "./routes/index";
+import { getConfig } from './config/serverconfig';
 
 const port = process.env.PORT || 3000;
+const app = express();
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(express.json());
 
+
+app.use("/api/auth", authRouter);
+app.use("/api/user", userRouter);
 app.use("/api/image", imagesRouter);
 
 app.get("/", (_req, res) => {
@@ -14,6 +19,6 @@ app.get("/", (_req, res) => {
 }); 
 
 app.listen(port, () => {
-  console.log(`Server is LIVE`);
+  getConfig();
   console.log(`Server is LIVE on port ${port}`);
 });
