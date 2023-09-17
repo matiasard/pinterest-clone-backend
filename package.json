@@ -24,7 +24,7 @@
     "unsplash-js": "^7.0.18"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=17"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
