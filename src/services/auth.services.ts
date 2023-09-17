@@ -73,7 +73,7 @@ authCtrl.login = async (req: Request, res: Response) => {
         { email },
         getConfig().refreshTokenSecretKey,
         {
-          expiresIn: "2h",
+          expiresIn: "5h",
           // expiresIn: 60,
         }
       );
