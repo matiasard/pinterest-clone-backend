@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm i && tsc",
+    "build": "npm i && prisma generate && tsc",
     "tsc": "tsc",
     "start": "node build/index.js",
     "dev": "ts-node-dev src/index.ts",
